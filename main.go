@@ -5,15 +5,14 @@ import (
 	"encoding/base64"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/gorilla/mux"
 )
 
-//var clientUsername = os.Getenv("CLIENT_USERNAME")
-//var clientPassword = os.Getenv("CLIENT_PASSWORD")
-var clientUsername = "username"
-var clientPassword = "password"
+var clientUsername = os.Getenv("CLIENT_USERNAME")
+var clientPassword = os.Getenv("CLIENT_PASSWORD")
 
 func main() {
 	router := mux.NewRouter()

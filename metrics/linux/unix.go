@@ -1,6 +1,6 @@
 // +build !windows,cgo
 
-package loadavg
+package linux
 
 import (
 	"eagle-client/utils"

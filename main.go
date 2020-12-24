@@ -1,22 +1,24 @@
 package main
 
 import (
-	"eagle-client/loadavg"
+	"eagle-client/metrics/linux"
 	"encoding/base64"
 	"log"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/gorilla/mux"
 )
 
-var clientUsername = os.Getenv("CLIENT_USERNAME")
-var clientPassword = os.Getenv("CLIENT_PASSWORD")
+//var clientUsername = os.Getenv("CLIENT_USERNAME")
+//var clientPassword = os.Getenv("CLIENT_PASSWORD")
+var clientUsername = "username"
+var clientPassword = "password"
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/api/v1/cpu/load/avg", use(loadavg.GetAvgLoad, basicAuth)).Methods("GET")
+	router.HandleFunc("/api/v1/cpu/load/avg", use(linux.GetAvgLoad, basicAuth)).Methods("GET")
+	router.HandleFunc("/api/v1/disk/usage/stat", use(linux.GetDiskUsage, basicAuth)).Methods("GET")
 
 	http.Handle("/", router)
 

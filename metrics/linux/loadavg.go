@@ -1,4 +1,4 @@
-package loadavg
+package linux
 
 import (
 	"encoding/json"
